@@ -12,6 +12,7 @@ import Java
 import Java.Collections   as J
 import Java.Concurrent    as F
 import Kafka.AdminClient
+import Kafka.RestAPI
 import Kafka.Types
 
 props = M.fromList
@@ -24,16 +25,18 @@ main = do
 
   ac <- newAdminClient props
 
-  listRes <- listTopics ac
-  print listRes
+  runKafkaApi ac 8080
 
-  let topics = tiTopicName <$> listRes
+  -- listRes <- listTopics ac
+  -- print listRes
 
-  descRes <- describeTopics ac topics
-  print descRes
+  -- let topics = tiTopicName <$> listRes
 
-  let createCmd = CreateTopic (TopicName "new-topic") (PartitionsCount 2) (ReplicationFactor 1) M.empty
-  _ <- createTopics ac [createCmd]
+  -- descRes <- describeTopics ac topics
+  -- print descRes
+
+  -- let createCmd = CreateTopic (TopicName "new-topic") (PartitionsCount 2) (ReplicationFactor 1) M.empty
+  -- _ <- createTopics ac [createCmd]
 
   -- delRes <- deleteTopicsResultAll <$> adminClientDeleteTopics ac (topicListingName <$> topics)
   -- _ <- javaWith delRes F.get

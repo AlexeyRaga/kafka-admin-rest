@@ -1,4 +1,10 @@
 module Kafka.AdminClient
+( AdminClient
+, newAdminClient
+, listTopics
+, describeTopics
+, createTopics
+)
 where
 
 import Data.Bifunctor
@@ -7,12 +13,10 @@ import Java
 import Java.Collections as J
 import Java.Concurrent  as F
 
-
 import Kafka.Bindings.KafkaFuture as J
 import Kafka.Bindings.Types       as J
 import Kafka.Convert
 import Kafka.Types
-
 
 newAdminClient :: M.Map String String -> IO AdminClient
 newAdminClient c = adminClientCtor (toJavaMap c)
@@ -37,7 +41,7 @@ describeTopics c ts = do
   let kvs = fromJava ts :: [(JString, TopicDescription)]
   return ((toTopicMetadata . snd) <$> kvs)
 
-
+-------------------------------------------------------------------------------
 newTopic :: CreateTopic -> NewTopic
 newTopic ct =
   let (TopicName t) = ctTopicName ct
@@ -47,7 +51,6 @@ newTopic ct =
       nt = newTopicCtor t p (fromIntegral r)
   in if M.null conf then nt else newTopicSetConfigs nt (toJavaMap conf)
 
--------------------------------------------------------------------------------
 toJavaMap :: M.Map String String -> J.Map JString JString
 toJavaMap m = toJava $ bimap toJString toJString <$> M.toList m
 

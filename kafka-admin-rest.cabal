@@ -36,6 +36,7 @@ executable kafka-admin-rest-exe
 
 library
   exposed-modules:    Kafka.AdminClient
+                    , Kafka.RestAPI
                     , Kafka.Types
   other-modules:      Kafka.Bindings.KafkaFuture
                     , Kafka.Bindings.Types
@@ -47,10 +48,14 @@ library
                     , bifunctors
                     , bytestring
                     , containers
+                    , http-api-data
                     , mtl
                     , servant
                     , servant-server
                     , text
                     , transformers
+                    , wai
+                    , wai-servlet
+                    , wai-servlet-handler-jetty
   maven-depends:      org.apache.kafka:kafka-clients:1.0.0
   maven-repos:        http://packages.confluent.io/maven/
