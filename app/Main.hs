@@ -6,6 +6,7 @@
 module Main where
 
 import Control.Concurrent
+import Data.Aeson
 import Data.Map           as M
 import Java
 import Java.Collections   as J
