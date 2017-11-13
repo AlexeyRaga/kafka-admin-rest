@@ -13,4 +13,4 @@ RUN apt-get -q update && \
 ADD dist/build/kafka-admin-rest-exe/kafka-admin-rest-exe.jar /usr/local/bin/
 ADD dist/build/kafka-admin-rest-exe/kafka-admin-rest-exe /usr/local/bin/
 
-RUN ./usr/local/bin/kafka-admin-rest-exe
+CMD ./usr/local/bin/kafka-admin-rest-exe
