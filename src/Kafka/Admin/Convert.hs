@@ -1,10 +1,10 @@
-module Kafka.Convert
+module Kafka.Admin.Convert
 where
 
 import Java
 import Java.Collections
-import Kafka.Bindings.Types as B
-import Kafka.Types          as T
+import Kafka.Admin.Bindings.Types as B
+import Kafka.Admin.Types          as T
 
 toTopicMetadata :: B.TopicDescription -> T.TopicMetadata
 toTopicMetadata td = T.TopicMetadata

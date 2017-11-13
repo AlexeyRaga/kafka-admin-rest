@@ -3,7 +3,7 @@
 {-# LANGUAGE MagicHash        #-}
 {-# LANGUAGE TypeFamilies     #-}
 {-# LANGUAGE TypeOperators    #-}
-module Kafka.Bindings.KafkaFuture
+module Kafka.Admin.Bindings.KafkaFuture
 where
 
 import Java

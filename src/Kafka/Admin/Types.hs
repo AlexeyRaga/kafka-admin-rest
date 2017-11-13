@@ -3,7 +3,7 @@
 {-# LANGUAGE DeriveGeneric              #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module Kafka.Types
+module Kafka.Admin.Types
 where
 
 import Data.Aeson

@@ -1,4 +1,4 @@
-module Kafka.AdminClient
+module Kafka.Admin.AdminClient
 ( AdminClient
 , newAdminClient
 , listTopics
@@ -14,10 +14,10 @@ import Java
 import Java.Collections as J
 import Java.Concurrent  as F
 
-import Kafka.Bindings.KafkaFuture as J
-import Kafka.Bindings.Types       as J
-import Kafka.Convert
-import Kafka.Types
+import Kafka.Admin.Bindings.KafkaFuture as J
+import Kafka.Admin.Bindings.Types       as J
+import Kafka.Admin.Convert
+import Kafka.Admin.Types
 
 newAdminClient :: M.Map String String -> IO AdminClient
 newAdminClient c = adminClientCtor (toJavaMap c)

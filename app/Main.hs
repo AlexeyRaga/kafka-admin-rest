@@ -7,13 +7,13 @@ module Main where
 
 import Control.Concurrent
 import Data.Aeson
-import Data.Map           as M
+import Data.Map                as M
 import Java
-import Java.Collections   as J
-import Java.Concurrent    as F
-import Kafka.AdminClient
-import Kafka.RestAPI
-import Kafka.Types
+import Java.Collections        as J
+import Java.Concurrent         as F
+import Kafka.Admin.AdminClient
+import Kafka.Admin.RestAPI
+import Kafka.Admin.Types
 
 props = M.fromList
   [ ("bootstrap.servers", "localhost:9092")

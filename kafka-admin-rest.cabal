@@ -35,12 +35,12 @@ executable kafka-admin-rest-exe
   maven-repos:        http://packages.confluent.io/maven/
 
 library
-  exposed-modules:    Kafka.AdminClient
-                    , Kafka.RestAPI
-                    , Kafka.Types
-  other-modules:      Kafka.Bindings.KafkaFuture
-                    , Kafka.Bindings.Types
-                    , Kafka.Convert
+  exposed-modules:    Kafka.Admin.AdminClient
+                    , Kafka.Admin.RestAPI
+                    , Kafka.Admin.Types
+  other-modules:      Kafka.Admin.Bindings.KafkaFuture
+                    , Kafka.Admin.Bindings.Types
+                    , Kafka.Admin.Convert
   hs-source-dirs:     src
   default-language:   Haskell2010
   build-depends:      base >=4.8 && <4.9

@@ -1,12 +1,12 @@
 {-# LANGUAGE MagicHash, FlexibleContexts, DataKinds, TypeFamilies #-}
-module Kafka.Bindings.Types
+module Kafka.Admin.Bindings.Types
 where
 
 import Java
 import Java.Collections as J
 import Data.Map as M
 import Data.Bifunctor
-import Kafka.Bindings.KafkaFuture
+import Kafka.Admin.Bindings.KafkaFuture
 
 data Node = Node @org.apache.kafka.common.Node deriving (Class, Show)
 

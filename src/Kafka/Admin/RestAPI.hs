@@ -1,6 +1,6 @@
 {-# LANGUAGE DataKinds     #-}
 {-# LANGUAGE TypeOperators #-}
-module Kafka.RestAPI
+module Kafka.Admin.RestAPI
 where
 
 import Control.Monad.IO.Class
@@ -10,8 +10,8 @@ import Network.Wai.Servlet.Handler.Jetty
 import Servant.API
 import Servant.Server
 
-import Kafka.AdminClient
-import Kafka.Types
+import Kafka.Admin.AdminClient
+import Kafka.Admin.Types
 
 type KafkaAdminAPI = "topics" :> Get '[JSON] [TopicInfo]
                 :<|> "topics" :> "describe" :> Capture "topic" String :> Get '[JSON] [TopicMetadata]
