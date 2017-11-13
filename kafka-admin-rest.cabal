@@ -16,8 +16,8 @@ extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
 executable kafka-admin-rest-exe
-  main-is:             Main.hs
-  -- other-modules:
+  main-is:            Main.hs
+  other-modules:      Options
   -- other-extensions:
   hs-source-dirs:     app
   default-language:   Haskell2010
@@ -27,6 +27,7 @@ executable kafka-admin-rest-exe
                     , bytestring
                     , containers
                     , mtl
+                    , optparse-applicative
                     , servant
                     , servant-server
                     , text
