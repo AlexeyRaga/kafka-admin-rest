@@ -1,0 +1,48 @@
+version: 2.0
+jobs:
+  build:
+    working_directory: ~/code
+    docker:
+      - image: typelead/eta:latest
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - dot-eta-{{ checksum "kafka-admin-rest.cabal" }}
+            - dot-eta
+
+      - restore_cache:
+          keys:
+            - dist-{{ checksum "kafka-admin-rest.cabal" }}
+            - dist
+
+      - run: etlas update
+      - run: etlas install --dependencies-only
+      - run: etlas configure --enable-uberjar-mode
+      - run: etlas build
+
+      - save_cache:
+          key: dot-eta
+          paths:
+            - ~/.eta
+            - ~/.etlas
+            - ~/.coursier
+
+      - save_cache:
+          key: dot-eta-{{ checksum "kafka-admin-rest.cabal" }}
+          paths:
+            - ~/.eta
+            - ~/.etlas
+            - ~/.coursier
+
+      - save_cache:
+          key: dist
+          paths:
+            - ./dist
+
+      - save_cache:
+          key: dist-{{ checksum "kafka-admin-rest.cabal" }}
+          paths:
+            - ./dist
