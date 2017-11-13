@@ -20,3 +20,14 @@ kafka:
     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     KAFKA_DELETE_TOPIC_ENABLE: "true"
     KAFKA_CREATE_TOPICS:
+
+rest:
+  image: alexeyraga/kafka-admin-rest:latest
+  hostname: rest
+  ports:
+    - 9099:9099
+  links:
+    - kafka:kafka
+  environment:
+    BOOTSTRAP_BROKER: "kafka:9092"
+    API_PORT: 9099
