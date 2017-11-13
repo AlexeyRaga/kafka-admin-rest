@@ -4,6 +4,7 @@ module Kafka.AdminClient
 , listTopics
 , describeTopics
 , createTopics
+, deleteTopics
 )
 where
 
@@ -24,6 +25,12 @@ newAdminClient c = adminClientCtor (toJavaMap c)
 createTopics :: AdminClient -> [CreateTopic] -> IO ()
 createTopics c ts = do
   res <- createTopicsResultAll <$> adminClientCreateTopics c (newTopic <$> ts)
+  _ <- javaWith res F.get
+  return ()
+
+deleteTopics :: AdminClient -> [TopicName] -> IO ()
+deleteTopics c ts = do
+  res <- deleteTopicsResultAll <$> adminClientDeleteTopics c (unTopicName <$> ts)
   _ <- javaWith res F.get
   return ()
 
