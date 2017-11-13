@@ -50,8 +50,8 @@ library
                     , containers
                     , http-api-data
                     , mtl
-                    , servant
-                    , servant-server
+                    , servant >= 0.11 && <0.12
+                    , servant-server >= 0.11 && <0.12
                     , text
                     , transformers
                     , wai
